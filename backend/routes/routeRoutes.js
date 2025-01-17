@@ -30,6 +30,50 @@
 
 
 // export default router;
+// import express from "express";
+// import {
+//   getRoutes,
+//   getRouteById,
+//   addRoute,
+//   updateRoute,
+//   deleteRoute,
+//   searchRoutesByPlace
+// } from "../controllers/routeController.js";
+
+// const router = express.Router();
+
+// // Routes for routes
+// router.get("/", getRoutes);
+// router.get("/:id", getRouteById);
+// router.post("/", addRoute);
+// router.put("/:id", updateRoute);
+// router.delete("/:id", deleteRoute);
+// router.get("/search/:query", searchRoutesByPlace);
+
+// export default router;
+// filepath: /D:/sabristhi/backend/routes/routeRoutes.js
+// import express from "express";
+// import {
+//   getRoutes,
+//   getRouteById,
+//   addRoute,
+//   updateRoute,
+//   deleteRoute,
+//   searchRoutesByPlace
+// } from "../controllers/routeController.js";
+
+// const router = express.Router();
+
+// // Routes for routes
+// router.get("/", getRoutes);
+// router.get("/:id", getRouteById);
+// router.post("/", addRoute);
+// router.put("/:id", updateRoute);
+// router.delete("/:id", deleteRoute);
+// router.get("/search/:query", searchRoutesByPlace);
+
+// export default router;
+// filepath: /D:/sabristhi/backend/routes/routeRoutes.js
 import express from "express";
 import {
   getRoutes,
@@ -48,7 +92,6 @@ router.get("/:id", getRouteById);
 router.post("/", addRoute);
 router.put("/:id", updateRoute);
 router.delete("/:id", deleteRoute);
-router.get("/search/:query", searchRoutesByPlace);
+router.get("/search/:from/:to", searchRoutesByPlace); // Updated route definition
 
 export default router;
-

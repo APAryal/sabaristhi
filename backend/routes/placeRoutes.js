@@ -29,6 +29,28 @@
 // router.get("/search/:query", searchPlaces);
 
 // export default router;
+// import express from "express";
+// import {
+//   getPlaces,
+//   getPlaceById,
+//   addPlace,
+//   updatePlace,
+//   deletePlace,
+//   searchPlaces,
+// } from "../controllers/placeController.js";
+
+// const router = express.Router();
+
+// // Routes for places
+// router.get("/", getPlaces);
+// router.get("/:id", getPlaceById);
+// router.post("/", addPlace);
+// router.put("/:id", updatePlace);
+// router.delete("/:id", deletePlace);
+// router.get("/search/:query", searchPlaces);
+
+// export default router;
+// filepath: /D:/sabristhi/backend/routes/placeRoutes.js
 import express from "express";
 import {
   getPlaces,
