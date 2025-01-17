@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 170a850917387aa492a3e0ecc01009cfee41aae9
 import {
     StyleSheet,
     Text,
@@ -229,6 +234,7 @@ import {
 // import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 // import axios from 'axios';
 
+<<<<<<< HEAD
 // const RegisterScreen = ({ navigation }) => {
 //   const [name, setName] = useState('');
 //   const [email, setEmail] = useState('');
@@ -274,3 +280,6 @@ import {
 // });
 
 // export default RegisterScreen;
+=======
+export default RegisterScreen;
+>>>>>>> 170a850917387aa492a3e0ecc01009cfee41aae9

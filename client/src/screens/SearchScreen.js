@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 170a850917387aa492a3e0ecc01009cfee41aae9
 import React, { useState } from 'react';
 import {
   SafeAreaView,
