@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 170a850917387aa492a3e0ecc01009cfee41aae9
 import {
     StyleSheet,
     Text,
@@ -227,59 +222,3 @@ import {
   };
   
   export default RegisterScreen;
-  
-//   const styles = StyleSheet.create({});
-
-// import React, { useState } from 'react';
-// import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-// import axios from 'axios';
-
-<<<<<<< HEAD
-// const RegisterScreen = ({ navigation }) => {
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleRegister = async () => {
-//     try {
-//       const response = await axios.post('http://localhost:5002/api/auth/register', { name, email, password });
-//       // Navigate to Login
-//       console.log(response.data);
-//       navigation.navigate('Login');
-//     } catch (error) {
-//       console.error('Registration failed:', error);
-//     }
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Text>Name:</Text>
-//       <TextInput style={styles.input} value={name} onChangeText={setName} />
-//       <Text>Email:</Text>
-//       <TextInput style={styles.input} value={email} onChangeText={setEmail} />
-//       <Text>Password:</Text>
-//       <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
-//       <Button title="Register" onPress={handleRegister} />
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     padding: 16,
-//   },
-//   input: {
-//     height: 40,
-//     borderColor: 'gray',
-//     borderWidth: 1,
-//     marginBottom: 12,
-//     paddingHorizontal: 8,
-//   },
-// });
-
-// export default RegisterScreen;
-=======
-export default RegisterScreen;
->>>>>>> 170a850917387aa492a3e0ecc01009cfee41aae9

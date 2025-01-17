@@ -28,13 +28,9 @@ const getVehicleIcon = (vehicleType) => {
 
 const VehicleDetails = ({ route, navigation }) => {
   const { transport } = route.params;
-
-  const stops = [
-    'Koteshwor',
-    'Tinkune',
-    'Baneshwor',
-    'Putalisadak'
-  ];
+  const stops = transport.stops?.length > 0
+  ? transport.stops // Use stops provided by backend
+  : ['Koteshwor', 'Tinkune', 'Baneshwor', 'Putalisadak'];
 
   const RouteStop = ({ name, isLast }) => (
     <View style={styles.stopContainer}>

@@ -24,6 +24,7 @@ const SearchScreen = ({ navigation }) => {
   const [showFromDropdown, setShowFromDropdown] = useState(false);
   const [showToDropdown, setShowToDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
+  
 
   const [recentSearches] = useState([
     { id: '1', from: 'Koteshwor', to: 'Putalisadak', price: 'Rs. 20', distance: '4.3 Km' },
