@@ -6,7 +6,8 @@ import cors from "cors";
 import router from './routes/authRoutes.js';
 import vehicleRoutes from "./routes/vehicleRoutes.js";
 import placeRoutes from "./routes/placeRoutes.js";
-import routeRoutes from "./routes/routeRoutes.js";
+import routeRoutes from "./routes/routeRoutes.js"; 
+
 // import transportRoutes from './routes/transportRoutes.js';
 
 dotenv.config();
@@ -33,4 +34,3 @@ app.use("/api/vehicles", vehicleRoutes);
 app.use("/api/places", placeRoutes);
 // app.use("/api/routes", routeRoutes);
 app.use('/api/routes', routeRoutes);
-// app.use('/api', transportRoutes);

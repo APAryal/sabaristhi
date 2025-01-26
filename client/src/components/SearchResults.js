@@ -21,10 +21,23 @@ const TransportCard = ({ route, navigation }) => {
   const timing = route.estimatedTime || '6:00am - 8:00pm';
   
   return (
+    <>
     <TouchableOpacity 
-      style={styles.transportCard}
+  onPress={() => navigation.navigate('MapScreen', {
+    fromLocation,
+    toLocation
+  })}
+  style={styles.viewRouteButton}
+>
+  <Text style={styles.viewRouteText}>View Route</Text>
+</TouchableOpacity>
+    <TouchableOpacity 
+    
+
+      style={styles.transportCard }
       onPress={() => navigation.navigate('VehicleDetails', { transport: route })}
     >
+
       <View style={styles.transportIconContainer}>
         <Ionicons 
           name={getVehicleIcon(route.vehicle?.type)} 
@@ -55,6 +68,7 @@ const TransportCard = ({ route, navigation }) => {
         </View>
       </View>
     </TouchableOpacity>
+</>
   );
 };
 

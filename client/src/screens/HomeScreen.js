@@ -18,7 +18,7 @@ const HomeScreen = ({ navigation }) => {
         {/* Background Image Section */}
         <View style={styles.imageSection}>
           <ImageBackground
-            source={require('../../assets/city-background.jpg')}
+            source={require('../../assets/cityy.png')}
             style={styles.backgroundImage}
             resizeMode="cover"
           >
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   button: {
-    backgroundColor: '#2E5077',
+    backgroundColor: '#ff6b00',
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 10,
