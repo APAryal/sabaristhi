@@ -49,13 +49,21 @@ const MapScreen = ({ route }) => {
         <Marker coordinate={coordinates.from} title="From Location" />
         <Marker coordinate={coordinates.to} title="To Location" />
 
-        <MapViewDirections
+        {/* <MapViewDirections
           origin={coordinates.from}
           destination={coordinates.to}
           apikey="YOUR_GOOGLE_MAPS_API_KEY" // Replace with your Google Maps API key
           strokeWidth={4}
           strokeColor="blue"
-        />
+        /> */}
+        <MapViewDirections
+  origin={coordinates.from}
+  destination={coordinates.to}
+  apikey="AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao" // Replace this with your actual API key
+  strokeWidth={4}
+  strokeColor="blue"
+/>
+
       </MapView>
     </View>
   );

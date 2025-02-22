@@ -61,7 +61,7 @@ const TransportCard = ({ route, navigation }) => {
           </Text>
           <View style={styles.dotSeparator} />
           <Text style={styles.distanceText}>
-            {route.distance ? `${route.distance} km` : '4.3 km'}
+            {/* {route.distance ? `${route.distance} km` : '4.3 km'} */}
           </Text>
           <View style={styles.dotSeparator} />
           <Text style={styles.timingText}>{timing}</Text>

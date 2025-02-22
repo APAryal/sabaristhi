@@ -55,7 +55,7 @@ const LoginScreen = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://192.168.2.103:5002/api/auth/login/", {
+      const response = await axios.post("http://192.168.1.116:5002/api/auth/login/", {
         email: email.trim(),
         password: password
       });
