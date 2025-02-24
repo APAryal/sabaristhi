@@ -59,7 +59,7 @@ const MapScreen = ({ route }) => {
         <MapViewDirections
   origin={coordinates.from}
   destination={coordinates.to}
-  apikey="AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao" // Replace this with your actual API key
+  //apikey="AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao"// Replace this with your actual API key
   strokeWidth={4}
   strokeColor="blue"
 />
