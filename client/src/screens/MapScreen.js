@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  View, 
-  StyleSheet, 
-  Text, 
+import {
+  View,
+  StyleSheet,
+  Text,
   TouchableOpacity,
   SafeAreaView,
   StatusBar,
   Platform,
   Dimensions,
-  ActivityIndicator
+  ActivityIndicator,
+  Alert,
 } from 'react-native';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 
 const MapScreen = ({ route, navigation }) => {
   const { stops, fromLocation, toLocation, routeInfo } = route.params;
@@ -24,7 +26,6 @@ const MapScreen = ({ route, navigation }) => {
     longitude: parseFloat(stop.lon)
   })) || [];
 
-  // Calculate initial region to fit all markers
   useEffect(() => {
     if (stops?.length > 0) {
       const coordinates = stops.map(stop => ({
@@ -72,16 +73,15 @@ const MapScreen = ({ route, navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      
-      {/* Header */}
+
       <View style={styles.header}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
         >
           <Ionicons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
-        
+
         <View style={styles.headerInfo}>
           <Text style={styles.routeName} numberOfLines={1}>
             {routeInfo?.name || 'Route'}
@@ -92,7 +92,6 @@ const MapScreen = ({ route, navigation }) => {
         </View>
       </View>
 
-      {/* Map View */}
       <MapView
         style={styles.map}
         region={region}
@@ -102,12 +101,15 @@ const MapScreen = ({ route, navigation }) => {
         showsPointsOfInterest={false}
         customMapStyle={mapStyle}
       >
-        {/* Route Line */}
-        <Polyline
-          coordinates={routeCoordinates}
-          strokeColor="#ff6b00"
-          strokeWidth={4}
-        />
+        {/* Static Polyline Route */}
+        {routeCoordinates.length > 1 && (
+          <Polyline
+            coordinates={routeCoordinates}
+            strokeWidth={4}
+            strokeColor="#ff6b00"
+            lineDashPattern={[1]}
+          />
+        )}
 
         {/* Start Marker */}
         {stops.length > 0 && (
@@ -134,7 +136,7 @@ const MapScreen = ({ route, navigation }) => {
               longitude: parseFloat(stop.lon),
             }}
             title={`Stop ${index + 1}`}
-            description={stop.name}
+            description={stop.name || `Stop ${index + 1}`}
           >
             <View style={[styles.marker, styles.stopMarker]}>
               <Text style={styles.markerText}>{index + 1}</Text>
@@ -159,7 +161,6 @@ const MapScreen = ({ route, navigation }) => {
         )}
       </MapView>
 
-      {/* Info Card */}
       <View style={styles.infoCard}>
         <Text style={styles.infoTitle}>Route Information</Text>
         <View style={styles.infoRow}>
@@ -172,6 +173,12 @@ const MapScreen = ({ route, navigation }) => {
           <Ionicons name="location" size={18} color="#ff6b00" />
           <Text style={styles.infoText}>
             {stops.length} stops from {fromLocation} to {toLocation}
+          </Text>
+        </View>
+        <View style={styles.infoRow}>
+          <Ionicons name="information-circle" size={18} color="#ff6b00" />
+          <Text style={styles.infoText}>
+            Displaying simplified route path
           </Text>
         </View>
       </View>
@@ -196,6 +203,120 @@ const mapStyle = [
         "visibility": "off"
       }
     ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ffffff"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dadada"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#c9c9c9"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
   }
 ];
 
@@ -212,17 +333,33 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: '#ff6b00',
     fontSize: 16,
+    fontWeight: '500',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
-    backgroundColor: '#fff',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    borderBottomColor: '#e0e0e0',
+    backgroundColor: '#fff',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+    zIndex: 10,
   },
   backButton: {
-    marginRight: 10,
+    padding: 8,
+    marginRight: 8,
+    borderRadius: 20,
   },
   headerInfo: {
     flex: 1,
@@ -230,55 +367,75 @@ const styles = StyleSheet.create({
   routeName: {
     fontSize: 18,
     fontWeight: '600',
+    color: '#333',
   },
   routePath: {
     fontSize: 14,
     color: '#666',
+    marginTop: 2,
   },
   map: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    height: Dimensions.get('window').height - 180, // Adjust for header and info card
   },
   marker: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    justifyContent: 'center',
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     alignItems: 'center',
+    justifyContent: 'center',
     borderWidth: 2,
     borderColor: '#fff',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
   startMarker: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: '#4CAF50', // Green
   },
   stopMarker: {
-    backgroundColor: '#3498db',
+    backgroundColor: '#ff6b00', // Orange
   },
   endMarker: {
-    backgroundColor: '#e74c3c',
+    backgroundColor: '#F44336', // Red
   },
   markerText: {
     color: '#fff',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 12,
   },
   infoCard: {
     position: 'absolute',
-    bottom: 20,
-    left: 20,
-    right: 20,
+    bottom: 24,
+    left: 16,
+    right: 16,
     backgroundColor: '#fff',
     borderRadius: 12,
-    padding: 15,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
+    padding: 16,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+      },
+      android: {
+        elevation: 6,
+      },
+    }),
   },
   infoTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '600',
+    color: '#333',
     marginBottom: 10,
   },
   infoRow: {
@@ -287,9 +444,15 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   infoText: {
+    fontSize: 15,
+    color: '#555',
     marginLeft: 8,
-    fontSize: 14,
-    color: '#333',
+  },
+  errorText: {
+    color: 'red',
+    textAlign: 'center',
+    marginTop: 10,
+    fontWeight: '500',
   },
 });
 

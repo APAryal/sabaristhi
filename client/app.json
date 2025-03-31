@@ -23,6 +23,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": { // Add this section
+      "MAPS_API_KEY": "AIzaSyASVkSggJPw-RO7Z9TomO6u06aWoP3dAro"
     }
   }
 }

@@ -128,7 +128,7 @@ const BottomTabs = () => {
             focused ? <Ionicons name="person" size={24} color={color} /> : <Ionicons name="person-outline" size={24} color={color} />,
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Map"
         component={MapScreen}
         options={{
@@ -137,7 +137,7 @@ const BottomTabs = () => {
           tabBarIcon: ({ focused, color }) =>
             <FontAwesome name="map-marker" size={24} color={color} />,
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };

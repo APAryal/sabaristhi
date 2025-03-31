@@ -423,7 +423,7 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 
 const { width, height } = Dimensions.get('window');
-const API_BASE_URL = 'http://192.168.101.13:3000/api';
+const API_BASE_URL = 'http://192.168.101.5:3000/api';
 
 const SearchScreen = ({ navigation }) => {
   const [fromLocation, setFromLocation] = useState('');

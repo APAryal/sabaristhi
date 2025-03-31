@@ -1,3 +1,4 @@
+//VehicleDetails.js
 import React from 'react';
 import {
   View,
@@ -70,12 +71,12 @@ const VehicleDetails = ({ route, navigation }) => {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         {/* Header Section */}
         <View style={styles.header}>
-          <TouchableOpacity 
+          {/* <TouchableOpacity 
             style={styles.backButton}
             onPress={() => navigation.goBack()}
           >
             <Ionicons name="arrow-back" size={24} color="#333" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           
           <View style={styles.vehicleHeader}>
             <Ionicons 
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   contentContainer: {
-    paddingBottom: 40,
+    paddingBottom: 10,
   },
   header: {
     padding: 16,

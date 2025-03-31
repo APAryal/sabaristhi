@@ -32,10 +32,6 @@ const ProfileScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Profile</Text>
-        </View>
 
         {/* Profile Card */}
         <View style={styles.profileCard}>
@@ -96,16 +92,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f8f8',
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
-  header: {
-    padding: 16,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
+  // header: {
+  //   // padding: 16,
+  //   backgroundColor: '#fff',
+  //   borderBottomWidth: 1,
+  //   borderBottomColor: '#eee',
+  // },
+  // headerTitle: {
+  //   fontSize: 24,
+  //   fontWeight: 'bold',
+  // },
   profileCard: {
     backgroundColor: '#fff',
     padding: 20,
