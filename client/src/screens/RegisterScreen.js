@@ -129,7 +129,7 @@ import {
                   width: 300,
                   fontSize: password ? 16 : 16,
                 }}
-                placeholder="enter your Email"
+                placeholder="enter your Email Address"
               />
             </View>
           </View>
