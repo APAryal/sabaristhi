@@ -41,9 +41,9 @@ const LoginScreen = () => {
     }
 
     // Ensure password is strong enough
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/;
     if (!passwordRegex.test(password)) {
-      Alert.alert("Error", "Password must be at least 6 characters and contain a number and a special character");
+      Alert.alert("Error", "Password must be at least 7 characters and contain a number and a special character");
       return false;
     }
 
